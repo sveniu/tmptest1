@@ -3,6 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - aws sts get-caller-identity | jq -c
       - pwd
       - find .
       - printf "CODEBUILD_SRC_DIR_source1=%s\n" "$CODEBUILD_SRC_DIR_source1"
