@@ -1,9 +1,10 @@
 version: 0.2
 
 phases:
-  pre_build:
+  install:
     commands:
-      - apt install zip
+      - apt-get update -y
+      - apt-get install -y zip
   build:
     commands:
       - cd frontend/ && zip output.zip index.html script.js style.css
