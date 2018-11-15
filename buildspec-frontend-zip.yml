@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - cd frontend/ && zip output.zip index.html script.js style.css
+artifacts:
+  files:
+    - 'frontend/output.zip'
+  name: frontend-$(date +%Y-%m-%dT%H:%M:%S.%N%z) 

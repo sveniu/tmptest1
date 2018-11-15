@@ -1,4 +1,0 @@
-phases:
-  test:
-    commands:
-      - echo Testing something here

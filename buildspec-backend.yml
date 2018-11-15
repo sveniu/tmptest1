@@ -1,0 +1,9 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - printf "FIXME build backend Docker image"
+  post_build:
+    commands:
+      - printf "FIXME push backend Docker image"

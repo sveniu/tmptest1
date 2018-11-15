@@ -1,6 +1,11 @@
-document.getElementById("execute").addEventListener("click", e => {
+const elExecute = document.getElementById("execute")
+const elOutput = document.getElementById("output")
+
+elExecute.addEventListener("click", e => {
     e.preventDefault()
-    fetch(document.getElementById("target_url").value)
+
+    const target_url = document.getElementById("target_url").value
+    fetch(target_url)
         .then(response => response.json())
-        .then(json => document.getElementById("output").innerText = JSON.stringify(json, null, 4))
+        .then(json => elOutput.innerText = JSON.stringify(json, null, 4))
 }, false)
