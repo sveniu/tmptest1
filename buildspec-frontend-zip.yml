@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - aws sts get-caller-identity | jq -c
+      - aws sts get-caller-identity
 artifacts:
   files:
     - 'index.html'
