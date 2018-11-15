@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - pwd
+      - find .
+      - printf "CODEBUILD_SRC_DIR_source1=%s\n" "$CODEBUILD_SRC_DIR_source1"
+      - printf "CODEBUILD_SRC_DIR_source=%s\n" "$CODEBUILD_SRC_DIR_source"
+#  post_build:
+#    commands:
+#      - aws s3 cp 
