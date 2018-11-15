@@ -1,9 +1,0 @@
-version: 0.2
-
-phases:
-  build:
-    commands:
-      - printf "FIXME build frontend Docker image\n"
-  post_build:
-    commands:
-      - printf "FIXME push frontend Docker image\n" 
