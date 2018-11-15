@@ -14,4 +14,12 @@ def application(environ, start_response):
             d[k] = environ[k]
         else:
             d[k] = "N/A"
+
+    # Populate local environment info.
+    d['local'] = {}
+    with open('local.env', 'r') as f:
+        for line in f:
+            k, v = map(str.strip, line.split('='))
+            d['local'][k] = v
+
     return [json.dumps(d, sort_keys=True, indent=4) + "\n"]

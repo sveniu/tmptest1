@@ -4,6 +4,8 @@ phases:
   pre_build:
     commands:
       - aws sts get-caller-identity
+      - cd backend/
+      - envsubst < local.env.tpl > local.env
   build:
     commands:
       - printf "FIXME build backend Docker image"

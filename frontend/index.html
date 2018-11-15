@@ -9,16 +9,16 @@
 </head>
 
 <body>
+  <div>
+    This is frontend commit ${CODEBUILD_RESOLVED_SOURCE_VERSION}
+  </div>
+
   <form id="app">
     <input id="target_url" type="text" placeholder="Target URL" value="https://jsonplaceholder.typicode.com/todos/1">
     <button id="execute" type="submit">Go</button>
     <br>
     <textarea id="output" rows="32" cols="64"></textarea>
   </form>
-
-  <div>
-    meh1
-  </div>
 
   <script src="script.js"></script>
 </body>

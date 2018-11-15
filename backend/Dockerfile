@@ -6,6 +6,7 @@ RUN apk add --no-cache \
         uwsgi-python \
         python
 COPY . .
+RUN envsubst < local.env.tpl > local.env
 RUN rm -rf public/*
 CMD [ "uwsgi", "--http-socket", "0.0.0.0:3031", \
                "--uid", "uwsgi", \
