@@ -2,8 +2,8 @@ version: 0.2
 
 artifacts:
   files:
-    - 'frontend/index.html'
-    - 'frontend/script.js'
-    - 'frontend/style.css'
+    - 'index.html'
+    - 'script.js'
+    - 'style.css'
   base-directory: 'frontend'
   name: frontend-$(date +%Y-%m-%dT%H:%M:%S.%N%z) 
