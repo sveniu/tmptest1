@@ -9,5 +9,5 @@ phases:
       - printf "CODEBUILD_SRC_DIR_source=%s\n" "$CODEBUILD_SRC_DIR_source"
   post_build:
     commands:
-      - aws s3 cp --cache-control max-age=5 index.html s3://xrx-498317514113-frontend-static-1/
-      - aws s3 cp --cache-control max-age=11 script.js style.css s3://xrx-498317514113-frontend-static-1/
+      - aws s3 sync . s3://xrx-498317514113-frontend-static-1/ --exclude '*' --include 'index.html' --cache-control 'max-age=5'
+      - aws s3 sync . s3://xrx-498317514113-frontend-static-1/ --include '*' --exclude 'index.html' --cache-control 'max-age=11'
