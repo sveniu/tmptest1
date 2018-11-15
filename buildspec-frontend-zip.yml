@@ -5,5 +5,6 @@ artifacts:
     - 'index.html'
     - 'script.js'
     - 'style.css'
+    - '../buildspec-frontend-zip-deploy.yml'
   base-directory: 'frontend'
   name: frontend-$(date +%Y-%m-%dT%H:%M:%S.%N%z) 
