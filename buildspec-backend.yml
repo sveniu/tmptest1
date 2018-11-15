@@ -4,11 +4,25 @@ phases:
   pre_build:
     commands:
       - aws sts get-caller-identity
-      - cd backend/
-      - envsubst < local.env.tpl > local.env
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI=498317514113.dkr.ecr.us-east-1.amazonaws.com/xremovex-ecs-repo-backend
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
-      - printf "FIXME build backend Docker image"
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - cd backend/
+      - sed -i "s,__COMMIT__,${CODEBUILD_RESOLVED_SOURCE_VERSION},g" local.env
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
-      - printf "FIXME push backend Docker image"
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - printf '[{"name":"xremovex-ecs-container4","imageUri":"%s:%s"}]' "$REPOSITORY_URI" "$IMAGE_TAG" | tee imagedefinitions.json
