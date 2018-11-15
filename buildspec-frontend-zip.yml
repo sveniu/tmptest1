@@ -4,6 +4,10 @@ phases:
   pre_build:
     commands:
       - aws sts get-caller-identity
+  build:
+    commands:
+      - cd frontend/
+      - sed -i "s,__COMMIT__,${CODEBUILD_RESOLVED_SOURCE_VERSION},g' index.html
 artifacts:
   files:
     - 'index.html'
