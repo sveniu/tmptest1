@@ -1,5 +1,5 @@
 FROM alpine:3.7
-EXPOSE 8080
+EXPOSE 80
 VOLUME /usr/src/app/public
 WORKDIR /usr/src/app
 RUN apk add --no-cache \
@@ -7,7 +7,6 @@ RUN apk add --no-cache \
         python
 COPY . .
 RUN rm -rf public/*
-CMD [ "uwsgi", "--http-socket", "0.0.0.0:8080", \
-               "--uid", "uwsgi", \
+CMD [ "uwsgi", "--http-socket", "0.0.0.0:80", \
                "--plugins", "python", \
                "--wsgi", "app:application" ]
