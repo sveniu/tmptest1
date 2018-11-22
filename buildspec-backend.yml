@@ -4,6 +4,9 @@ phases:
   pre_build:
     commands:
       - aws sts get-caller-identity
+      - ls -la
+      - find . -ls
+      - pwd
       - echo Logging in to Amazon ECR...
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
