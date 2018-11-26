@@ -28,7 +28,7 @@ phases:
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"xremovex-ecs-container3","imageUri":"%s:%s"}]' "$REPOSITORY_URI" "$IMAGE_TAG" | tee imagedefinitions.json
+      - printf '[{"name":"container1","imageUri":"%s:%s"}]' "$REPOSITORY_URI" "$IMAGE_TAG" | tee imagedefinitions.json
 artifacts:
   files:
     - 'imagedefinitions.json'
