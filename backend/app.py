@@ -23,6 +23,7 @@ def application(environ, start_response):
 
     # Populate system environment info.
     data["system"]["time"] = datetime.datetime.utcnow().isoformat()+'Z'
+    data["system"]["time_ms"] = int(time.time() * 1000)
     data["system"]["cpus"] = []
     try:
         with open("/proc/cpuinfo") as f:
