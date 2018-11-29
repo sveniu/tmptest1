@@ -9,4 +9,5 @@ COPY . .
 RUN rm -rf public/*
 CMD [ "uwsgi", "--http-socket", "0.0.0.0:80", \
                "--plugins", "python", \
+               "--processes", "8", \
                "--wsgi", "app:application" ]
