@@ -1,6 +1,9 @@
 import datetime
 import json
 import os
+import time
+
+from urlparse import parse_qs
 
 def application(environ, start_response):
     start_response(
@@ -62,5 +65,11 @@ def application(environ, start_response):
         for line in f:
             k, v = map(str.strip, line.split("="))
             data["local"][k] = v
+
+    # Optional sleep.
+    try:
+        time.sleep(float(parse_qs(environ['QUERY_STRING'])['sleep'][0]))
+    except:
+        pass
 
     return [json.dumps(data, sort_keys=True, indent=4) + "\n"]
